@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar target/application.jar --mongo.env=$SB_ENV --mongo.host=$SB_MONGO_HOST --mongo.port=$SB_MONGO_PORT --mongo.db=$SB_MONGO_DB --mongo.user=$SB_MONGO_USER --mongo.password=$SB_MONGO_PASSWORD

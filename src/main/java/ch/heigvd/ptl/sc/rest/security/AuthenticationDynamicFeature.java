@@ -1,6 +1,6 @@
 package ch.heigvd.ptl.sc.rest.security;
 
-import ch.heigvd.ptl.sc.model.persistence.UserRepository;
+import ch.heigvd.ptl.sc.persistence.UserRepository;
 import java.util.Arrays;
 import javax.ws.rs.container.DynamicFeature;
 import javax.ws.rs.container.ResourceInfo;

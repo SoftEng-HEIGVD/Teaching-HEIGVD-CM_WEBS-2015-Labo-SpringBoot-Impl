@@ -1,11 +1,11 @@
 package ch.heigvd.ptl.sc;
 
-import ch.heigvd.ptl.sc.model.rest.ActionResource;
+import ch.heigvd.ptl.sc.rest.ActionResource;
 import ch.heigvd.ptl.sc.rest.security.AuthenticationDynamicFeature;
-import ch.heigvd.ptl.sc.model.rest.UserResource;
-import ch.heigvd.ptl.sc.model.rest.DataResource;
-import ch.heigvd.ptl.sc.model.rest.IssueResource;
-import ch.heigvd.ptl.sc.model.rest.IssueTypeResource;
+import ch.heigvd.ptl.sc.rest.UserResource;
+import ch.heigvd.ptl.sc.rest.DataResource;
+import ch.heigvd.ptl.sc.rest.IssueResource;
+import ch.heigvd.ptl.sc.rest.IssueTypeResource;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;

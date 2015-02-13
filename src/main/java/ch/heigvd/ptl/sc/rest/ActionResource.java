@@ -1,4 +1,4 @@
-package ch.heigvd.ptl.sc.model.rest;
+package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.converter.IssueConverter;

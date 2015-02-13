@@ -2,7 +2,7 @@ package ch.heigvd.ptl.sc.converter;
 
 import ch.heigvd.ptl.sc.model.Issue;
 import ch.heigvd.ptl.sc.model.Comment;
-import ch.heigvd.ptl.sc.model.persistence.IssueTypeRepository;
+import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
 import ch.heigvd.ptl.sc.to.CommentTO;
 import ch.heigvd.ptl.sc.to.IssueTO;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ch.heigvd.ptl.sc.model.persistence;
+package ch.heigvd.ptl.sc.persistence;
 
 import ch.heigvd.ptl.sc.model.IModel;
 import org.springframework.data.mongodb.repository.MongoRepository;

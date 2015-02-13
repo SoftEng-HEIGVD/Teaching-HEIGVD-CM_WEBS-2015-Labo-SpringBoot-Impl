@@ -1,4 +1,4 @@
-package ch.heigvd.ptl.sc.model.persistence;
+package ch.heigvd.ptl.sc.persistence;
 
 import ch.heigvd.ptl.sc.model.User;
 import java.util.List;

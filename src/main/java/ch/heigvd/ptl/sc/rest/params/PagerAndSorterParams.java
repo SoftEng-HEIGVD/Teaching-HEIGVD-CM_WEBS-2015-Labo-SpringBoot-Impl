@@ -1,4 +1,4 @@
-package ch.heigvd.ptl.sc.model.rest.params;
+package ch.heigvd.ptl.sc.rest.params;
 
 import java.util.ArrayList;
 import java.util.List;

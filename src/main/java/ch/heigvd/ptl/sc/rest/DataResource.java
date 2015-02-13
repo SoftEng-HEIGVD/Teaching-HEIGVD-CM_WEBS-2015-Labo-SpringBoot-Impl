@@ -1,12 +1,12 @@
-package ch.heigvd.ptl.sc.model.rest;
+package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.model.User;
 import ch.heigvd.ptl.sc.model.Issue;
 import ch.heigvd.ptl.sc.model.Comment;
 import ch.heigvd.ptl.sc.model.IssueType;
-import ch.heigvd.ptl.sc.model.persistence.UserRepository;
-import ch.heigvd.ptl.sc.model.persistence.IssueRepository;
-import ch.heigvd.ptl.sc.model.persistence.IssueTypeRepository;
+import ch.heigvd.ptl.sc.persistence.UserRepository;
+import ch.heigvd.ptl.sc.persistence.IssueRepository;
+import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
 import ch.heigvd.ptl.sc.converter.UserConverter;
 import ch.heigvd.ptl.sc.converter.IssueConverter;
 import ch.heigvd.ptl.sc.converter.IssueTypeConverter;

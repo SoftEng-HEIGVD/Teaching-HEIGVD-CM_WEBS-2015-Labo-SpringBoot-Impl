@@ -1,7 +1,7 @@
 package ch.heigvd.ptl.sc.rest.security;
 
 import ch.heigvd.ptl.sc.model.User;
-import ch.heigvd.ptl.sc.model.persistence.UserRepository;
+import ch.heigvd.ptl.sc.persistence.UserRepository;
 import java.io.IOException;
 import java.util.List;
 import javax.ws.rs.container.ContainerRequestContext;

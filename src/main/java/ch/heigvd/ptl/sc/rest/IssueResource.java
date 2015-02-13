@@ -1,10 +1,10 @@
-package ch.heigvd.ptl.sc.model.rest;
+package ch.heigvd.ptl.sc.rest;
 
 import ch.heigvd.ptl.sc.CityEngagementException;
 import ch.heigvd.ptl.sc.rest.security.Roles;
-import ch.heigvd.ptl.sc.model.persistence.IRepository;
-import ch.heigvd.ptl.sc.model.persistence.IssueRepository;
-import ch.heigvd.ptl.sc.model.rest.params.PagerAndSorterParams;
+import ch.heigvd.ptl.sc.persistence.IRepository;
+import ch.heigvd.ptl.sc.persistence.IssueRepository;
+import ch.heigvd.ptl.sc.rest.params.PagerAndSorterParams;
 import ch.heigvd.ptl.sc.converter.IConverter;
 import ch.heigvd.ptl.sc.converter.IssueConverter;
 import ch.heigvd.ptl.sc.model.IModel;

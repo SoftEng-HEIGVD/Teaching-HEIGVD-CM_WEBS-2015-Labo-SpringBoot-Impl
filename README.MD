@@ -11,7 +11,7 @@ The implementation is done with:
 
 ## Requirements
 
-- Java 1.6+
+- Java 1.7+
 - Maven 3.0.5+
 - Mongo 2.6+
 

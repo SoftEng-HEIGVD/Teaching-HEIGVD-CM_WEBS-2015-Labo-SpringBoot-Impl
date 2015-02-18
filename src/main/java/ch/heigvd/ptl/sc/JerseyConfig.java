@@ -1,5 +1,6 @@
 package ch.heigvd.ptl.sc;
 
+import ch.heigvd.ptl.sc.rest.ActionResource;
 import ch.heigvd.ptl.sc.rest.IssueActionResource;
 import ch.heigvd.ptl.sc.rest.security.AuthenticationDynamicFeature;
 import ch.heigvd.ptl.sc.rest.UserResource;
@@ -22,5 +23,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(IssueResource.class);
 		register(IssueTypeResource.class);
 		register(IssueActionResource.class);
+		register(ActionResource.class);
 	}
 }

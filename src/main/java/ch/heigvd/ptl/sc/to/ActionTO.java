@@ -1,23 +1,65 @@
 package ch.heigvd.ptl.sc.to;
 
-public class ActionTO {
-	private String type;
+import java.util.Date;
+
+public class ActionTO implements ITO {
+	private String id;
 	
-	private PayloadTO payload;
+	private String type;
 
-	public PayloadTO getPayload() {
-		return payload;
-	}
-
+	private String user;
+	
+	private String issueId;
+	
+	private Date actionDate;
+	
+	private String reason;
+	
 	public String getType() {
 		return type;
 	}
 
-	public void setPayload(PayloadTO payload) {
-		this.payload = payload;
+	public String getId() {
+		return id;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public Date getActionDate() {
+		return actionDate;
+	}
+
+	public String getIssueId() {
+		return issueId;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setActionDate(Date actionDate) {
+		this.actionDate = actionDate;
+	}
+
+	public void setIssueId(String issueId) {
+		this.issueId = issueId;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 }

@@ -1,17 +1,14 @@
 package ch.heigvd.ptl.sc.rest;
 
+import ch.heigvd.ptl.sc.model.Action;
 import ch.heigvd.ptl.sc.model.User;
 import ch.heigvd.ptl.sc.model.Issue;
 import ch.heigvd.ptl.sc.model.Comment;
 import ch.heigvd.ptl.sc.model.IssueType;
+import ch.heigvd.ptl.sc.persistence.ActionRepository;
 import ch.heigvd.ptl.sc.persistence.UserRepository;
 import ch.heigvd.ptl.sc.persistence.IssueRepository;
 import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
-import ch.heigvd.ptl.sc.converter.UserConverter;
-import ch.heigvd.ptl.sc.converter.IssueConverter;
-import ch.heigvd.ptl.sc.converter.IssueTypeConverter;
-import ch.heigvd.ptl.sc.to.DumpTO;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,19 +89,13 @@ public class DataResource {
 	private IssueRepository issueRepository;
 	
 	@Autowired
-	private UserConverter userConverter;
+	private ActionRepository actionRepository;
 	
-	@Autowired
-	private IssueTypeConverter issueTypeConverter;
-	
-	@Autowired
-	private IssueConverter issueConverter;
-	
-	private List<User> users = new ArrayList<>();
-	private List<User> citizen = new ArrayList<>();
-	private List<User> staff = new ArrayList<>();
-	private List<IssueType> issueTypes = new ArrayList<>();
-	private List<Issue> issues = new ArrayList();
+	private final List<User> users = new ArrayList<>();
+	private final List<User> citizen = new ArrayList<>();
+	private final List<User> staff = new ArrayList<>();
+	private final List<IssueType> issueTypes = new ArrayList<>();
+	private final List<Issue> issues = new ArrayList();
 	
 	private float random (float low, float high) {
     return rand.nextFloat() * (high - low) + low;
@@ -150,7 +141,28 @@ public class DataResource {
 		
 		return comments;
 	}
-
+	
+	private List<Action> generateActions(Date creationDate, Issue issue) throws ParseException {
+		List<Action> actions = new ArrayList<>();
+		
+		for (int i = 0; i < randomInt(1, 15); i++) {
+			Action a = new Action();
+			
+			a.setActionDate(randomDate(creationDate, SDF.parse("2015-06-01")));
+			a.setActionType(Action.ActionType.values()[randomInt(0, Action.ActionType.values().length)]);
+			a.setReason(DESCRIPTIONS_AND_COMMENTS[randomInt(0, DESCRIPTIONS_AND_COMMENTS.length)]);
+			a.setIssue(issue);
+			
+			User u = users.get(randomInt(0, users.size()));
+			
+			a.setUser(u.getFirstname() + " " + u.getLastname());
+			
+			actions.add(actionRepository.save(a));
+		}
+		
+		return actions;
+	}
+	
 	private void populateIssues() throws ParseException {
 		Date creationDate = randomDate(SDF.parse("2012-01-01"), SDF.parse("2015-06-01"));
 
@@ -169,6 +181,11 @@ public class DataResource {
 			is.setAssignee(staff.get(randomInt(0, staff.size())));
 			
 			issues.add(issueRepository.enrichedSave(is));
+		}
+		
+		for (Issue i : issues) {
+			i.setActions(generateActions(creationDate, i));
+			issueRepository.save(i);
 		}
 	}
 	
@@ -226,6 +243,7 @@ public class DataResource {
 		userRepository.deleteAll();
 		issueTypeRepository.deleteAll();
 		issueRepository.deleteAll();
+		actionRepository.deleteAll();
 
 		populateIssueTypes();
 		populateUsers();
@@ -233,16 +251,4 @@ public class DataResource {
 		
 		return Response.ok().build();
 	}
-	
-//	@Path("/dump")
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public DumpTO dump() {
-//		return new DumpTO(
-//			userConverter.convertSourceToTarget(userRepository.findAll()),
-//			employeeConverter.convertSourceToTarget(employeeRepository.findAll()),
-//			issueTypeConverter.convertSourceToTarget(issueTypeRepository.findAll()),
-//			issueConverter.convertSourceToTarget(issueRepository.findAll())
-//		);
-//	}
 }

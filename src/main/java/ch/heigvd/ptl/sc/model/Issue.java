@@ -33,6 +33,9 @@ public class Issue implements IModel {
 	
 	private List<String> tags;
 	
+	@DBRef
+	private List<Action> actions;
+	
 	public String getId() {
 		return id;
 	}
@@ -115,5 +118,13 @@ public class Issue implements IModel {
 
 	public void setTags(List<String> tags) {
 		this.tags = tags;
+	}
+
+	public List<Action> getActions() {
+		return actions;
+	}
+
+	public void setActions(List<Action> actions) {
+		this.actions = actions;
 	}
 }

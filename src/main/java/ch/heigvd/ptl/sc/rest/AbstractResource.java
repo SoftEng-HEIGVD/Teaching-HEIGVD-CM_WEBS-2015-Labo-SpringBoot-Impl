@@ -102,7 +102,7 @@ public abstract class AbstractResource {
 
 	@Roles("staff")
 	@DELETE
-	@Path("/{id}")
+	@Path("{id}")
 	public Response delete(@PathParam("id") String id) {
 		getRepository().delete(id);
 		return Response.ok().status(204).build();

@@ -22,6 +22,8 @@ public class IssueTO implements ITO {
 	
 	private List<CommentTO> comments;
 
+	private List<ActionTO> actions;
+	
 	public String getId() {
 		return id;
 	}
@@ -100,5 +102,13 @@ public class IssueTO implements ITO {
 
 	public void setLng(String lng) {
 		this.lng = lng;
+	}
+
+	public List<ActionTO> getActions() {
+		return actions;
+	}
+
+	public void setActions(List<ActionTO> actions) {
+		this.actions = actions;
 	}
 }

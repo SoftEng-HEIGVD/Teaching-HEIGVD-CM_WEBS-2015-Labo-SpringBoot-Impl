@@ -1,8 +1,10 @@
 package ch.heigvd.ptl.sc.converter;
 
+import ch.heigvd.ptl.sc.model.Action;
 import ch.heigvd.ptl.sc.model.Issue;
 import ch.heigvd.ptl.sc.model.Comment;
 import ch.heigvd.ptl.sc.persistence.IssueTypeRepository;
+import ch.heigvd.ptl.sc.to.ActionTO;
 import ch.heigvd.ptl.sc.to.CommentTO;
 import ch.heigvd.ptl.sc.to.IssueTO;
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ public class IssueConverter extends AbstractConverter<Issue, IssueTO> {
 	
 	@Autowired
 	private IssueTypeRepository issueTypeRepository;
+	
+	@Autowired ActionConverter actionConverter;
 	
 	@Override
 	public Issue createEmptySource() {
@@ -51,11 +55,9 @@ public class IssueConverter extends AbstractConverter<Issue, IssueTO> {
 		
 		target.setIssueType(issueTypeConverter.convertSourceToTarget(source.getIssueType()));
 
-		List<CommentTO> temp = new ArrayList<>();
-		for (Comment comment : source.getComments()) {
-			temp.add(commentConverter.convertSourceToTarget(comment));
-		}
-		target.setComments(temp);
+		target.setComments(commentConverter.convertSourceToTarget(source.getComments()));
+		
+		target.setActions(actionConverter.convertSourceToTargetForIssue(source.getActions()));
 	}
 
 	@Override
